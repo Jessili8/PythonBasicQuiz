@@ -2,14 +2,14 @@ from ai import call_gpt
 import time
 import random
 import json
+import os
 
-# Welcome message
+# Define Welcome message
 def welcome():
     print("\nWelcome to the Python Basic Quiz Game!")
-    print("Get ready to test your knowledge and have fun!\n")
+    print("Get ready to test your knowledge and have fun!")
 
-# Fallback question set
-fallback_questions = [
+DEFAULT_FALLBACK_QUESTIONS = [
     {"question": "What is the correct syntax to print 'Hello, World!' in Python?", "answer": "print('Hello, World!')", "hint": "Use the print function with parentheses and quotes around the text."},
     {"question": "Which symbol is used to comment a single line in Python?", "answer": "#", "hint": "It’s a symbol placed at the start of the line to ignore that line during execution."},
     {"question": "What is the correct way to create a variable in Python with the value 5?", "answer": "x = 5", "hint": "Use an equal sign to assign a value to a variable."},
@@ -22,8 +22,22 @@ fallback_questions = [
     {"question": "What is the output of: bool(0)?", "answer": "False", "hint": "In Python, zero is considered a 'falsy' value."}
 ]
 
+# Load fallback questions from JSON file or use default
+def load_fallback_questions(filepath='fallback_questions.json'):
+    if os.path.exists(filepath):
+        try:
+            with open(filepath, 'r') as f:
+                data = json.load(f)
+            if isinstance(data, list):
+                return data
+            else:
+                print("Invalid fallback JSON format. Using default fallback questions.")
+        except Exception as e:
+            print(f"Failed to load fallback questions: {e}. Using default fallback questions.")
+    return DEFAULT_FALLBACK_QUESTIONS
+
 # Generate questions using GPT
-def generate_questions(topic="Python", level="Basic", num_questions=3):
+def generate_questions(topic="Python", level="Basic", num_questions=3, fallback_pool=None):
     print("\nWe are asking GPT for generating questions. Let's wait and see... ")
     prompt = (
         f"Generate {num_questions} quiz questions and answers on the topic of {topic} "
@@ -45,23 +59,24 @@ def generate_questions(topic="Python", level="Basic", num_questions=3):
         print("\nError parsing GPT response. Here's what was returned:")
         print(response if response else "<No response received>")
         print("Using fallback Python questions.\n")
-        return random.sample(fallback_questions.copy(), min(num_questions, len(fallback_questions)))
+        return random.sample(fallback_pool.copy(), min(num_questions, len(fallback_pool)))
 
 # Game loop
 def run_quiz():
     topic = "Python"
     level = "Basic"
+    fallback_pool = load_fallback_questions()
 
     try:
-        num_questions = int(input(f"Enter number of questions (1 to {len(fallback_questions)}): "))
-        if num_questions < 1 or num_questions > len(fallback_questions):
+        num_questions = int(input(f"Enter number of questions (1 to {len(fallback_pool)}): "))
+        if num_questions < 1 or num_questions > len(fallback_pool):
             print("Invalid number. Defaulting to 5 questions.")
             num_questions = 5
     except ValueError:
         print("Invalid input. Defaulting to 5 questions.")
         num_questions = 5
 
-    questions = generate_questions(topic, level, num_questions)
+    questions = generate_questions(topic, level, num_questions, fallback_pool)
 
     score = 0
     for idx, q in enumerate(questions):
