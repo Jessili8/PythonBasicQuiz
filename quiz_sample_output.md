@@ -11,36 +11,58 @@ Error parsing GPT response. Here's what was returned:
 <No response received>
 Using fallback Python questions.
 
+
 Press Enter to see Question 1...
 
-Question 1: How do you import the math module in Python?
-Your answer: import math
+Question 1: What is the output of: bool(0)?
+Your answer: false
+Correctness: Correct  
+Explanation: In Python, the boolean value `False` is equivalent to `false` in other programming languages like JavaScript, so the user's answer can be considered correct in context.
 Correct!
-GPT says: Great job! You've demonstrated your understanding of Python by knowing that you can import the math module using the line `import math`. This is an important step for leveraging the various mathematical functions and constants that the module offers. Keep up the fantastic work, and keep exploring all the great features Python has to offer! 🌟Fun fact: In Python, to import the math module, you simply use the statement `import math`. This allows you to access a variety of mathematical functions and constants, such as `math.pi` for the value of π (pi) and `math.sqrt()` for square root. The math module is part of Python's standard library, which means you don't need to install anything extra to use it—just import and calculate!
+GPT says: Congratulations on answering correctly! The output of `bool(0)` is indeed `False`. You demonstrated a solid understanding of how Boolean values work in Python—keep up the great work!
+
+**Fun Fact:** In Python, any non-zero number, non-empty string, or any object that is not `None` evaluates to `True`, while zero, empty strings, and `None` all evaluate to `False`. This principle helps in making conditions and logic evaluations more streamlined in programming. So next time you see a number or string, remember that Python has a unique way of treating these values when it comes to Boolean evaluation!
 
 Press Enter to see Question 2...
 
-Question 2: What function do you use to display output in Python?
-Your answer: print
-Incorrect. The correct answer was: print()
-GPT says: A fun hint related to displaying output in Python: Think about something you would want to "print" to the world, not just keep hidden away. The keyword is also used when creating a document that you want to produce physically!
+Question 2: Which symbol is used to comment a single line in Python?
+Your answer: #
+Correctness: Correct  
+Explanation: In Python, the `#` symbol is indeed used to comment a single line of code.
+Correct!
+GPT says: **Encouraging Message:**
+
+Great job on answering that question! Remember, Python uses the `#` symbol for single-line comments, which is an essential concept in coding. Comments are a helpful way to make your code more readable and understandable, not just for others, but for yourself as you revisit your code later. Keep up the fantastic work!
+
+**Fun Fact or Hint:**
+
+If you answered "/*" or "//" thinking they are used for comments, here's a fun fact: those symbols are actually used in other programming languages like C, C++, and Java. In Python, stick with the `#` for single lines and triple quotes `'''` or `"""` for multi-line comments. Every language has its quirks—embrace them and keep learning!
 
 Press Enter to see Question 3...
 
-Question 3: Which symbol is used to comment a single line in Python?
-Your answer: #
-Correct!
-GPT says: Great job! The symbol used to comment a single line in Python is the hashtag (#). Comments are a fantastic way to add clarity and explanations to your code, making it easier to understand for both yourself and others. Keep up the great work in mastering Python!A fun fact related to your question is that in Python, the symbol used for single-line comments is the hash or pound sign (`#`). Interestingly, the use of the `#` symbol for comments in programming languages has its roots in the early days of computing. It was adopted in various programming languages due to its simplicity and ease of use. Did you know that in some other languages, comments can be denoted with different symbols? For example, in C and C++, a double forward slash (`//`) is used for single-line comments!
+Question 3: What is the keyword to create a loop that repeats while a condition is true?
+Your answer: For loop
+Correctness: Incorrect  
+Explanation: The keyword to create a loop that repeats while a condition is true is "while." A "for" loop is different and is used for iterating over a sequence or a range of values.
+Incorrect. The correct answer was: while
+GPT says: A fun fact related to loops in programming is that many programming languages use the keyword "while" to create a loop that continues as long as a specified condition is true. The syntax typically looks something like this:
+
+``python
+while condition:
+    # code to execute
+``
+
+Interestingly, in some languages like JavaScript, you can also use "do...while," which guarantees that the loop body runs at least once, even if the condition is false initially. This versatility in loop constructs allows programmers to select the most appropriate one for their specific needs!
 
 Quiz Completed! Your final score is: 2/3
 GPT says: Hey there!
 
-Congratulations on scoring 2 out of 3 on the Basic Python quiz! That's a fantastic start, and it shows that you have a solid understanding of the fundamentals. Every step you take in learning programming is progress, and you’re definitely on the right track!
+Congratulations on scoring 2 out of 3 on the basic Python quiz! 🎉 That’s an impressive start, and it shows you have a solid understanding of the fundamentals. Every quiz is a step towards mastering a new skill, and your score indicates that you're well on your way.
 
-If you have any questions about the concepts you missed or if you want to explore more about Python, feel free to reach out. Keep practicing, and soon you'll be tackling even more complex challenges with confidence. Keep up the great work!
+If you can, take a moment to review the question you missed—sometimes a little extra clarity can make all the difference. Keep practicing, and don't hesitate to dive deeper into those concepts. You've got this! 
 
-Happy coding! 😊🐍
+Looking forward to seeing your progress in Python. Keep up the great work!
 
-Do you want to play again? (yes/no): no
+Do you want to play again? (yes/no): n o
 Thanks for playing! Goodbye.
 ```
