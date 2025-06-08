@@ -61,7 +61,7 @@ def generate_questions(topic="Python", level="Basic", num_questions=3, fallback_
         print("Using fallback Python questions.\n")
         return random.sample(fallback_pool.copy(), min(num_questions, len(fallback_pool)))
 
-# Game loop
+# Run Quiz using GPT
 def run_quiz():
     topic = "Python"
     level = "Basic"
@@ -84,16 +84,27 @@ def run_quiz():
         print(f"\nQuestion {idx + 1}: {q['question']}")
         user_answer = input("Your answer: ").strip()
 
-        if user_answer.lower() == q['answer'].lower():
+        evaluation_prompt = (
+            f"Question: {q['question']}\n"
+            f"Correct Answer: {q['answer']}\n"
+            f"User Answer: {user_answer}\n"
+            f"Decide if the user's answer is correct. Reply with this exact format:\n"
+            f"Correctness: Correct or Incorrect\n"
+            f"Explanation: Your brief explanation."
+        )
+        evaluation = call_gpt(evaluation_prompt)
+
+        print(evaluation)
+        if evaluation.lower().startswith("correctness: correct"):
             print("Correct!")
-            feedback = call_gpt(f"Give an encouraging message for answering correctly to: {q['question']}")
             score += 1
+            feedback = call_gpt(f"Give an encouraging message for answering correctly to: {q['question']}, and Share a fun fact or hint related to this Correct answer: {q['question']}")
         else:
-            print(f"Incorrect. The correct answer was: {q['answer']}")
+            print(f"Incorrect. The correct answer was: {q['answer']}")            
             feedback = call_gpt(f"Share a fun fact or hint related to this incorrect answer: {q['question']}")
 
-        print("GPT says:", feedback)
         time.sleep(1)
+        print("GPT says:", feedback)
 
     print(f"\nQuiz Completed! Your final score is: {score}/{len(questions)}")
     final_feedback = call_gpt(
@@ -113,3 +124,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
