@@ -1,0 +1,27 @@
+[
+  {
+    "question": "What keyword is used to define a class in Python?",
+    "answer": "class",
+    "hint": "It's the same word used to start a blueprint for objects."
+  },
+  {
+    "question": "What is the keyword to create a loop that repeats while a condition is true?",
+    "answer": "while",
+    "hint": "It\u2019s often paired with a condition like x < 10."
+  },
+  {
+    "question": "What function do you use to display output in Python?",
+    "answer": "print()",
+    "hint": "It\u2019s used to send text or data to the console."
+  },
+  {
+    "question": "How do you import the math module in Python?",
+    "answer": "import math",
+    "hint": "This keyword is used to bring in standard libraries."
+  },
+  {
+    "question": "Which keyword is used to handle exceptions in Python?",
+    "answer": "try",
+    "hint": "You begin your error-catching block with this."
+  }
+]
